@@ -527,7 +527,7 @@ minetest.register_on_chat_message(function(name, message)
 		return 
 	end
 
-	-- find robots to order to
+	-- find job corresponding to the order
 	local finish = false
 	local order = ""
 	local reg = {}
@@ -544,7 +544,7 @@ minetest.register_on_chat_message(function(name, message)
 		if finish then break end
 	end
 	
-	if not order then return end
+	if not finish then return end
 	-- decode the order:   [unit] [number1, number2, ...] order
 	local r_number = string.match(message, "^([0-9]+) .*")
 	r_number = tonumber(r_number)
@@ -577,6 +577,7 @@ minetest.register_on_chat_message(function(name, message)
 				end
 			else
 				entity:say("your level is not sufficient")
+				break
 			end
 		end
 	end

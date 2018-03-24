@@ -122,3 +122,9 @@ robots.register_order({"attention", "take care of yourself", "straight"}, {
 			function() self:set_animation(self.animations.attention_step, true) end
 		)
 	end})
+
+robots.register_order({"rest", "stand", "cool"}, {
+	start = function(self, message)
+		local start_anim = self.animations.reset_pose
+		self:set_animation(start_anim, true)
+	end})
